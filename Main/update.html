@@ -1,0 +1,944 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <script src="https://unpkg.com/boxicons@2.1.1/dist/boxicons.js"></script>
+
+    <link rel="stylesheet" href="estilos.css">
+
+    <title>Update</title>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="../Main/main.html">Fundación Bariloche</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            </div>
+        </div>
+    </nav>
+
+    <br>
+
+    <!--Container Main start-->
+    <div class="p-3 text-center">
+        <div id="spinner" class="spinner-border" role="status">
+            <span class="visually-hidden">Cargando...</span>
+        </div>
+    </div>
+
+    <form class="container">
+        <div class="form-row">
+            <div class="form-group col-md-8">
+                <label>Titulo</label>
+                <input type="text" class="form-control" id="txtTitulo" placeholder="Titulo">
+            </div>
+            <div class="form-group col-md-4">
+                <label>Departamento</label>
+                <select id="txtDepartamento" class="form-control">
+                    <option value="ENERGIA">ENERGIA</option>
+                    <option value="MADE">MADE</option>
+                    <option value="ASC">ASC</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                <label>Pais/Region</label>
+                <input type="text" class="form-control" id="txtPais" placeholder="Pais">
+            </div>
+            <div class="form-group col-md-4">
+                <label>Contratante</label>
+                <input type="text" class="form-control" id="txtContratante" placeholder="Contratante">
+            </div>
+            <div class="form-group col-md-4">
+                <label>Dirección</label>
+                <input type="text" class="form-control" id="txtDireccion" placeholder="Direccion">
+            </div>
+        </div>
+
+        <h3>Datos del Contrato</h3>
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                <label>Numero</label>
+                <input type="text" class="form-control" id="txtNumero" placeholder="Numero">
+            </div>
+            <div class="form-group col-md-2">
+                <label>Monto</label>
+                <input type="text" class="form-control" id="txtMonto" placeholder="Monto">
+            </div>
+            <div class="form-group col-md-2">
+                <label>Moneda</label>
+                <select id="txtMoneda" class="form-control">
+                    <option value="USD">USD</option>
+                    <option value="EUR">EUR</option>
+                    <option value="PESOS">PESOS</option>
+                    <option value="ECU">ECU</option>
+                </select>
+            </div>
+            <div class="form-group col-md-2">
+                <label for="">Ejecución</label>
+                <input type="checkbox" class="form-control" id="txtEjecucion">
+            </div>
+            <div class="form-group col-md-2">
+                <label class="text-center" for="">Convenio/Acuerdo</label>
+                <input type="checkbox" class="form-control" id="txtConvenio">
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col-md-3">
+                <label for="inputState">Mes Inicio</label>
+                <select id="mesDesde" class="form-control">
+                    <option value="null" selected>Seleccione</option>
+                    <option value="0" id="idMes">Enero</option>
+                    <option value="1" id="idMes">Febrero</option>
+                    <option value="2" id="idMes">Marzo</option>
+                    <option value="3" id="idMes">Abril</option>
+                    <option value="4" id="idMes">Mayo</option>
+                    <option value="5" id="idMes">Junio</option>
+                    <option value="6" id="idMes">Julio</option>
+                    <option value="7" id="idMes">Agosto</option>
+                    <option value="8" id="idMes">Septiembre</option>
+                    <option value="9" id="idMes">Octubre</option>
+                    <option value="10" id="idMes">Noviembre</option>
+                    <option value="11" id="idMes">Diciembre</option>
+                </select>
+            </div>
+            <div class="form-group col-md-1">
+                <label>Año Inicio</label>
+                <input type="number" class="form-control" id="txtAnioInicio">
+            </div>
+            <div class="form-group col-md-3">
+                <label>Mes Fin</label>
+                <select id="mesHasta" class="form-control">
+                    <option value="null" selected>Seleccione</option>
+                    <option value="0" id="idMes">Enero</option>
+                    <option value="1" id="idMes">Febrero</option>
+                    <option value="2" id="idMes">Marzo</option>
+                    <option value="3" id="idMes">Abril</option>
+                    <option value="4" id="idMes">Mayo</option>
+                    <option value="5" id="idMes">Junio</option>
+                    <option value="6" id="idMes">Julio</option>
+                    <option value="7" id="idMes">Agosto</option>
+                    <option value="8" id="idMes">Septiembre</option>
+                    <option value="9" id="idMes">Octubre</option>
+                    <option value="10" id="idMes">Noviembre</option>
+                    <option value="11" id="idMes">Diciembre</option>
+                </select>
+            </div>
+            <div class="form-group col-md-1">
+                <label>Año Fin</label>
+                <input type="number" class="form-control" id="txtAnioFin">
+            </div>
+
+            <div class="form-group col-md-4">
+                <label>Link</label>
+                <input type="text" class="form-control" id="txtLink">
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col-md-12">
+                <label>Consultores Asociados</label>
+                <textarea name="" id="txtConsultores" class="form-control" cols="30" rows="5"></textarea>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col-md-12">
+                <label>Descripcion de Proyecto</label>
+                <textarea name="" id="txtDescProyexto" class="form-control" cols="30" rows="5"></textarea>
+            </div>
+        </div>
+
+        <!-- Publicaciones -->
+        <h3>Publicaciones</h3>
+        <button type="button" data-toggle="modal" data-target="#exampleModal" class="btn btn-primary">+</button>
+        <br>
+        <br>
+        <div class="panel-body table-responsive">
+            <table id="mytablePublicacion" class="container table">
+                <thead class="container">
+                    <tr>
+                        <th>ID</th>
+                        <th>Año</th>
+                        <th>Codigo BSC</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+            </table>
+            <tbody id="mytableBodyPublicacion">
+
+            </tbody>
+        </div>
+
+        <hr>
+
+        <!-- Personal -->
+        <div class="form-row">
+            <div class="form-group col-md-7">
+                <label>Personal</label>
+                <select id="txtPersonal" class="form-control">
+                    <option id="idOpcionPersonal" value="null" selected>Seleccione</option>
+                </select>
+            </div>
+            <button type="button" onclick="imprimirValorPersonal()" style="height: 40px; margin-top: 30px;"
+                id="btnAgregarPersonal" class="btn btn-primary">+</button>
+
+            <div class="panel-body table-responsive">
+                <table id="mytable" class="container table">
+                    <thead class="container">
+                        <tr>
+                            <th>ID</th>
+                            <th>Personal</th>
+                            <th>Coordinador</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                </table>
+                <tbody>
+
+                </tbody>
+            </div>
+
+            <br>
+            <hr>
+
+            <!-- Areas -->
+            <div class="form-group col-md-7">
+                <label>Areas</label>
+                <select id="txtAreas" class="form-control">
+                    <option id="idOpcionArea" value="null" selected>Seleccione</option>
+                </select>
+            </div>
+            <button type="button" onclick="imprimirValorAreas()" style="height: 40px; margin-top: 30px;"
+                id="btnAgregarArea" class="btn btn-primary">+</button>
+
+            <div class="panel-body table-responsive">
+                <table id="mytableArea" class="container table">
+                    <thead class="container">
+                        <tr>
+                            <th>ID</th>
+                            <th>Area</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                </table>
+                <tbody>
+
+                </tbody>
+            </div>
+        </div>
+
+        <br>
+        <hr>
+
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                <h6 for="">Certificado Conformidad</h6>
+                <input id="certConformidad" type="checkbox">
+            </div>
+            <div class="form-group col-md-4">
+                <h6 for="">Ficha Lista?</h6>
+                <input id="idFichaLista" onclick="fichaSeleccionada()" type="checkbox">
+            </div>
+            <div class="form-group col-md-4">
+
+                <select name="" onchange="cambiarValor()" class="form-control" id="comboFicha">
+                    <option selected value="-1">Seleccione</option>
+                    <option value="0">Landaveri, Raúl</option>
+                    <option value="1">Lallana, Francisco</option>
+                    <option value="2">Nadal. Gustavo</option>
+                    <option value="3">Di Sbroiavacca, Nicolás</option>
+                    <option value="4">Dubrovsky, Hilda</option>
+                    <option value="5">Recalde, Marina</option>
+                </select>
+            </div>
+        </div>
+        <br>
+        <button style="margin-right: 50px;" type="submit" id="enviar" class="btn btn-primary">Guardar</button>
+        <button type="button" class="btn btn-danger" id="cancelar" data-dismiss="modal">Cancelar</button>
+        <br><br>
+
+
+    </form>
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="formPublicacion" action="">
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="">Año</label>
+                                <input type="text" class="form-control" id="txtAnioPubli" placeholder="Año">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="">Codigo BCS</label>
+                                <input type="text" class="form-control" id="txtCodigoBcs" placeholder="Codigo BSC">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-12">
+                                <label>Publicacion</label>
+                                <textarea class="form-control" name="" id="txtPublicacion" cols="10"
+                                    rows="5"></textarea>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="btnPublicacion" class="btn btn-primary">Guardar</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script>
+
+        let cancelar = document.getElementById("cancelar");
+        cancelar.addEventListener("click", (e) => {
+            e.preventDefault();
+            window.location = "../Main/main.html"
+        })
+
+        $(document).ready(function () {
+            fetch("https://proyecto-fundacion.herokuapp.com/api/Areas", {
+                headers: {
+                    Authorization: "Bearer " + localStorage.getItem("token"),
+                    "Content-Type": "application/json",
+                },
+            })
+                .then((response) => response.json())
+                .catch((response) => {
+                    Swal.fire({
+                        icon: "error",
+                        title: "Sesión expirada",
+                        showConfirmButton: false,
+                    });
+                    setInterval(() => {
+                        window.location = "../index.html";
+                    }, 2000);
+                    return false;
+                })
+                .then((data) => {
+                    cargarCombo(data);
+                });
+
+            fetch("https://proyecto-fundacion.herokuapp.com/api/Personal", {
+                headers: {
+                    Authorization: "Bearer " + localStorage.getItem("token"),
+                    "Content-Type": "application/json",
+                },
+            })
+                .then((response) => response.json())
+                .then((data) => {
+                    console.log(data);
+                    cargarComboPersonal(data);
+                    hideSpinner();
+                });
+        })
+
+        function cargarCombo(datos) {
+            var html = "<option value=''>Seleccione</option>";
+            $("#txtAreas").append(html);
+            select = document.getElementById("txtAreas");
+            for (let i = 0; i < datos.length; i++) {
+                var option = document.createElement("option");
+                option.value = datos[i].id;
+                option.text = datos[i].area1;
+                select.add(option);
+                //console.log(datos[i].area1);
+            }
+        }
+
+        function cargarComboPersonal(datos) {
+            var html = "<option value=''>Selecione</option>";
+            $("#txtPersonal").append(html);
+            select = document.getElementById("txtPersonal");
+            for (let i = 0; i < datos.length; i++) {
+                var option = document.createElement("option");
+                option.value = datos[i].id;
+                option.text = datos[i].nombre;
+                select.add(option);
+                //console.log(datos[i].area1);
+            }
+        }
+
+
+        function hideSpinner() {
+            document.getElementById("spinner").style.display = "none";
+        }
+
+        let areas = [];
+        var objAreas = [];
+        function imprimirValorAreas() {
+            var select = document.getElementById("txtAreas");
+            var options = document.getElementById("idOpcionArea");
+            console.log(select.value);
+
+            if (select.value == "") {
+                return false;
+            } else {
+                areas.push(select.value);
+                objAreas.push({ id: select.value })
+                console.log(objAreas);
+            }
+        }
+
+        var coordinadorOpcion = false;
+        function mostrarCoordinador() {
+            coordinadorOpcion = document.getElementById("txtCordinador").checked;
+            console.log(coordinadorOpcion)
+        }
+
+        $(document).on('click', '#txtCordinador', function () {
+            // e.preventDefault();
+            idPersonal = $(this).parent().parent().children().first().text();
+            console.log(idPersonal);
+
+            if ($(this).is(':checked')) {
+                for (const obj of objPersonal) {
+                    if (obj.id == idPersonal) {
+                        obj.coordinador = true;
+                        break;
+                    }
+                    //coordinadorOpcion = false;
+                }
+            } else {
+                for (const obj of objPersonal) {
+                    if (obj.id == idPersonal) {
+                        obj.coordinador = false;
+                        break;
+                    }
+                    //coordinadorOpcion = false;
+                }
+            }
+
+        });
+
+        let personal = [];
+        var objPersonal = [];
+        // var select;
+        function imprimirValorPersonal() {
+            var select = document.getElementById("txtPersonal");
+            var options = document.getElementById("idOpcionPersonal");
+            console.log(select.value);
+            if (select.value == "") {
+                return false;
+            } else {
+                personal.push(select.value);
+                objPersonal.push(
+                    {
+                        id: select.value,
+                        coordinador: coordinadorOpcion
+                    })
+                console.log(objPersonal);
+            }
+        }
+
+        var i = 0;
+        function removerPersonal(index) {
+            $('#row' + index).closest('tr').remove();
+        }
+
+        $(document).on('click', '#btnEliminarPersonal', function () {
+            // e.preventDefault();
+
+            idPersonalEliminar = $(this).parent().parent().children().first().text();
+            const eliminado = objPersonal.findIndex(object => {
+                return object.id === idPersonalEliminar;
+            });
+            console.log(eliminado);
+            let a = objPersonal.splice(eliminado, 1);
+            console.log(a);
+            console.log(objPersonal)
+
+        })
+
+
+        let btnAgregarPersonal = document.getElementById("btnAgregarPersonal");
+
+        btnAgregarPersonal.addEventListener('click', cargarTabla);
+        btnAgregarPersonal.addEventListener('click', mostrarDatos);
+        btnAgregarPersonal.addEventListener('click', mostrarDatos2);
+
+
+        function cargarTabla() {
+            var personal = document.getElementById("txtPersonal").value;
+            var combo = document.getElementById("txtPersonal");
+            var nombre = combo.options[combo.selectedIndex].text;
+
+            if (personal == "null") {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Seleccione un Personal',
+                })
+                return false;
+            }
+
+            var fila = '<tr id="row' + i + '"><td>' + personal + '</td><td>' + nombre + '</td><td><input type=checkbox onchange="mostrarCoordinador()" id="txtCordinador" /></td><td><button id="btnEliminarPersonal" class="btn btn-danger" onclick="removerPersonal(' + i + ')" type=button><box-icon name="trash"></box-icon></button></td></tr>';
+
+            i++;
+
+            $('#mytable tr:first').after(fila);
+        }
+
+
+        function mostrarDatos() {
+            for (let row of mytable.rows) {
+                for (let cell of row.cells) {
+                    console.log(cell);
+                    console.log(cell.textContent);
+                    console.log(cell.firstChild);
+                }
+            }
+        }
+
+        function mostrarDatos2() {
+            $('#mytable tr').each(function () {
+                $(this).find('td').each(function () {
+                    console.log($(this));
+                });
+            });
+        }
+
+        //cargar tabla areas y remover
+        $(document).ready(function () {
+            fichaSeleccionada();
+        });
+
+        var comboFicha;
+        var comboFichaSeleccionada;
+
+        function fichaSeleccionada() {
+            var fichaLista = document.getElementById("idFichaLista").checked;
+
+            if (fichaLista) {
+                document.getElementById("comboFicha").disabled = !fichaLista;
+                comboFicha = document.getElementById("comboFicha").value;
+                comboFicha2 = document.getElementById("comboFicha");
+
+                comboFichaSeleccionada = comboFicha2.options[comboFicha2.selectedIndex].text;
+                console.log(comboFichaSeleccionada)
+            }
+            else {
+                document.getElementById("comboFicha").disabled = !fichaLista;
+                comboFicha2 = document.getElementById("comboFicha");
+                comboFichaSeleccionada = comboFicha2.options[comboFicha2.selectedIndex].text;
+                comboFichaSeleccionada = "";
+                comboFicha = -1;
+            }
+        }
+
+        function cambiarValor() {
+            comboFicha = document.getElementById("comboFicha").value;
+            comboFicha2 = document.getElementById("comboFicha");
+
+            comboFichaSeleccionada = comboFicha2.options[comboFicha2.selectedIndex].text;
+            console.log(comboFichaSeleccionada)
+
+        }
+
+        let btnAgregarArea = document.getElementById("btnAgregarArea");
+
+        btnAgregarArea.addEventListener('click', cargarTablaArea);
+        btnAgregarArea.addEventListener('click', mostrarDatosArea);
+        btnAgregarArea.addEventListener('click', mostrarDatos2Area);
+
+        var indexArea = 0;
+        function removerArea(areaIndex) {
+            $('#rowArea' + areaIndex).closest('tr').remove();
+        }
+
+        $(document).on('click', '#btnEliminarArea', function (e) {
+            e.preventDefault();
+
+            idArea = $(this).parent().parent().children().first().text();
+
+            const eliminadoArea = objAreas.findIndex(object => {
+                return object.id == idArea;
+            });
+
+            console.log(eliminadoArea);
+            let area = objAreas.splice(eliminadoArea, 1);
+            console.log(area);
+            console.log(objAreas)
+
+        })
+
+        function cargarTablaArea() {
+            var area = document.getElementById("txtAreas").value;
+            var combo = document.getElementById("txtAreas");
+            var nombre = combo.options[combo.selectedIndex].text;
+
+            if (area == "null") {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Seleccione un Area',
+                })
+                return false;
+            }
+            var fila = '<tr id="rowArea' + indexArea + '"><td>' + area + '</td><td>' + nombre + '</td><td><button id="btnEliminarArea" class="btn btn-danger" onclick="removerArea(' + indexArea + ')" type=button><box-icon name="trash"></box-icon></button></td></tr>';
+
+            indexArea++;
+
+            $('#mytableArea tr:first').after(fila);
+        }
+
+        function mostrarDatosArea() {
+            for (let row of mytableArea.rows) {
+                for (let cell of row.cells) {
+                    console.log(cell);
+                    console.log(cell.textContent);
+                    console.log(cell.firstChild);
+                }
+            }
+        }
+
+        function mostrarDatos2Area() {
+            $('#mytableArea tr').each(function () {
+                $(this).find('td').each(function () {
+                    console.log($(this));
+                });
+            });
+        }
+
+        //Publicacion
+        var indexPublicacion = 0;
+        let publicacionBtn = document.getElementById("btnPublicacion");
+
+        let publicacion = [];
+        var objPublicacion = [];
+        // var select;
+        var iPubli = 0;
+        function imprimirValorPublicacion() {
+            var txtPubli = document.getElementById("txtPublicacion").value;
+            var anio = document.getElementById("txtAnioPubli").value;
+            var codigoBcs = document.getElementById("txtCodigoBcs").value;
+            //publicacion.push(select.value);
+            objPublicacion.push(
+                {
+                    idPublicacion: iPubli,
+                    idProyecto: id,
+                    año: anio,
+                    publicacion: txtPubli,
+                    codigobcs: codigoBcs
+                })
+            console.log(objPublicacion);
+            iPubli++;
+        }
+
+        publicacionBtn.addEventListener("click", (e) => {
+            e.preventDefault();
+            cargarTablaPublicacion();
+            imprimirValorPublicacion();
+            document.getElementById("formPublicacion").reset();
+        });
+        publicacionBtn.addEventListener("click", mostrarDatosPublicacion());
+        publicacionBtn.addEventListener("click", mostrarDatos2Publicacion());
+
+        // function removerPublicacion(pubicacionIdex) {
+        //     $('#rowPubli' + pubicacionIdex).closest('tr').remove();
+        // }
+
+        var removido = 0;
+        const removerPublicacion = (pubicacionIdex) => {
+            $('#rowPubli' + pubicacionIdex).closest('tr').remove();
+            removido = pubicacionIdex;
+        }
+
+        var masInfo = 0;
+        const funcionMasInfo = (j) => {
+            console.log(j)
+            masInfo = j;
+        }
+
+        function cargarTablaPublicacion() {
+            var txtPubli = document.getElementById("txtPublicacion").value;
+            var anio = document.getElementById("txtAnioPubli").value;
+            var codigoBcs = document.getElementById("txtCodigoBcs").value;
+            //var fila = '<tr id="rowArea' + indexArea + '"><td>' + area + '</td><td>' + nombre + '</td><td><button id="btnEliminarArea" onclick="removerArea(' + indexArea + ')" type=button><box-icon name="trash"></box-icon></button></td></tr>';
+            var fila = '<tr id="rowPubli' + indexPublicacion + '"><td>' + indexPublicacion + '</td><td>' + anio + '</td><td>' + codigoBcs + '</td><td><button class="btn btn-danger" id="btnEliminarPublicacion" onclick="removerPublicacion(' + indexPublicacion + ')" type=button><box-icon name="trash"></box-icon></button>' +
+                '<button data-toggle="modal" data-target="#exampleModal" id="btnMasInfo" onclick="funcionMasInfo( ' + indexPublicacion + ')" class="btn btn-secondary" type="button"><box-icon name="info-circle"></box-icon></button></td></tr>';
+
+            indexPublicacion++;
+
+            $('#mytablePublicacion tr:first').after(fila);
+
+        }
+
+        function mostrarDatosPublicacion() {
+            for (let row of mytablePublicacion.rows) {
+                for (let cell of row.cells) {
+                    console.log(cell);
+                    console.log(cell.textContent);
+                    console.log(cell.firstChild);
+                }
+            }
+        }
+
+        function mostrarDatos2Publicacion() {
+            $('#mytablePublicacion tr').each(function () {
+                $(this).find('td').each(function () {
+                    console.log($(this));
+                });
+            });
+        }
+
+        //var codigoBcs;
+        $(document).on('click', '#btnEliminarPublicacion', function (e) {
+            e.preventDefault();
+            console.log(removido);
+            console.log(indexPublicacion)
+
+            const eliminadoPublicacion = objPublicacion.findIndex(object => {
+                return object.idPublicacion == removido;
+            });
+
+            console.log(eliminadoPublicacion);
+            let p = objPublicacion.splice(eliminadoPublicacion, 1);
+            console.log(p);
+            console.log(objPublicacion)
+            codigoBcs = 0;
+        })
+
+        $(document).on('click', '#btnMasInfo', function (e) {
+            e.preventDefault();
+            console.log(masInfo);
+
+            objPublicacion.forEach(element => {
+                if (element.idPublicacion == masInfo) {
+                    document.getElementById("txtPublicacion").disabled = true;
+                    document.getElementById("txtAnioPubli").disabled = true;
+                    document.getElementById("txtCodigoBcs").disabled = true;
+                    document.getElementById("txtPublicacion").value = element.publicacion;
+                    document.getElementById("txtAnioPubli").value = element.año;
+                    document.getElementById("txtCodigoBcs").value = element.codigobcs;
+                }
+            });
+        })
+
+        var idProyectoUpdate = localStorage.getItem("idProyecto");
+
+        let enEjecucion = document.getElementById("txtEjecucion").checked;
+        console.log(enEjecucion);
+
+        var moneda = document.getElementById("txtMoneda");
+        var monedaSeleccionada = moneda.options[moneda.selectedIndex].text;
+        console.log(moneda);
+
+        var depto = document.getElementById("txtDepartamento");
+        var deptoSeleccionado = depto.options[depto.selectedIndex].text;
+
+        fetch('https://proyecto-fundacion.herokuapp.com/api/Proyecto/' + idProyectoUpdate, {
+            headers: {
+                Authorization: "Bearer " + localStorage.getItem("token"),
+                "Content-Type": "application/json",
+            },
+        })
+            .then(response => response.json())
+            .then((data) => {
+                console.log(data);
+                document.getElementById("certConformidad").checked = data[0].certconformidad;
+                document.getElementById("txtTitulo").value = data[0].titulo;
+                document.getElementById("txtDepartamento").value = data[0].departamento;
+                document.getElementById("txtPais").value = data[0].paisRegion;
+                document.getElementById("txtContratante").value = data[0].contratante;
+                document.getElementById("txtDireccion").value = data[0].dirección;
+                document.getElementById("txtNumero").value = data[0].nroContrato;
+                document.getElementById("txtMonto").value = data[0].montoContrato;
+                document.getElementById("txtMoneda").value = data[0].moneda;
+                document.getElementById("mesDesde").value = data[0].mesInicio;
+                document.getElementById("mesHasta").value = data[0].mesFinalizacion;
+                document.getElementById("txtAnioInicio").value = data[0].anioInicio;
+                document.getElementById("txtAnioFin").value = data[0].anioFinalizacion;
+                document.getElementById("txtEjecucion").checked = data[0].enCurso;
+                document.getElementById("txtConsultores").value = data[0].consultoresAsoc;
+                document.getElementById("txtDescProyexto").value = data[0].descripcion;
+                document.getElementById("comboFicha").value = data[0].certificadopor;
+                document.getElementById("txtLink").value = data[0].link;
+                document.getElementById("idFichaLista").checked = data[0].fichaLista;
+                document.getElementById("txtConvenio").checked = data[0].convenio;
+                data[0].listaPersonal.forEach(i => {
+
+                    var fila = '<tr id="row' + i.id + '"><td>' + i.id + '</td><td>' + i.nombre + '</td><td><input type=checkbox onchange="mostrarCoordinador()" id="txtCordinador"/></td><td><button id="btnEliminarPersonal" class="btn btn-danger" onclick="removerPersonal(' + i.id + ')" type=button><box-icon name="trash"></box-icon></button></td></tr>';
+                    $('#mytable tr:first').after(fila);
+
+                    personal.push(i.id)
+                    objPersonal.push(
+                        {
+                            id: parseInt(i.id),
+                            coordinador: i.coordinador
+                        }
+                    )
+                    for (const obj of objPersonal) {
+                        if (obj.coordinador) {
+                            console.log("esta chequeado")
+                            document.getElementById("txtCordinador").checked = true;
+                        }
+                        else {
+                            document.getElementById("txtCordinador").checked = false;
+                        }
+                    }
+                });
+
+                data[0].listaAreas.forEach(i => {
+                    //revisar si es row o rowArea
+                    var fila = '<tr id="rowArea' + i.id + '"><td>' + i.id + '</td><td>' + i.area1 + '</td><td><button id="btnEliminarArea" class="btn btn-danger" onclick="removerArea(' + i.id + ')" type=button><box-icon name="trash"></box-icon></button></td></tr>';
+                    $('#mytableArea tr:first').after(fila);
+
+                    areas.push(parseInt(i.id));
+                    objAreas.push({ id: parseInt(i.id) })
+                });
+
+                data[0].listaPublicaciones.forEach(i => {
+                    var fila = '<tr id="rowPubli' + i.idPublicacion + '"><td>' + i.idPublicacion + '</td><td>' + i.año + '</td><td>' + i.codigobcs + '</td><td><button class="btn btn-primary" id="btnEliminarPublicacion" onclick="removerPublicacion(' + i.idPublicacion + ')" type=button><box-icon name="trash"></box-icon></button>' +
+                        '<button data-toggle="modal" data-target="#exampleModal" id="btnMasInfo" onclick="funcionMasInfo( ' + i.idPublicacion + ')" class="btn btn-secondary" type="button"><box-icon name="info-circle"></box-icon></button></td></tr>';
+
+                    $('#mytablePublicacion tr:first').after(fila);
+
+                    objPublicacion.push(
+                        {
+                            idPublicacion: i.idPublicacion,
+                            idProyecto: id,
+                            año: i.año,
+                            publicacion: i.publicacion,
+                            codigobcs: i.codigobcs
+                        })
+
+                })
+
+            })
+
+        let boton = document.getElementById("enviar");
+        boton.addEventListener("click", (e) => {
+            e.preventDefault();
+
+            var url = "https://proyecto-fundacion.herokuapp.com/api/Proyecto";
+            //var url = "https://localhost:44313/api/Proyecto";
+
+            let enEjecucion = document.getElementById("txtEjecucion").checked;
+            console.log(enEjecucion);
+
+            var moneda = document.getElementById("txtMoneda");
+            var monedaSeleccionada = moneda.options[moneda.selectedIndex].text;
+            console.log(monedaSeleccionada);
+
+            var depto = document.getElementById("txtDepartamento");
+            var deptoSeleccionado = depto.options[depto.selectedIndex].text;
+
+            // comboFicha2 = document.getElementById("comboFicha");
+            // comboFicha = document.getElementById("comboFicha").value;
+            // comboFichaSeleccionada = comboFicha2.options[comboFicha2.selectedIndex].text;
+
+            var data = {
+                id: parseInt(idProyectoUpdate),
+                titulo: document.getElementById("txtTitulo").value,
+                paisRegion: document.getElementById("txtPais").value,
+                contratante: document.getElementById("txtContratante").value,
+                dirección: document.getElementById("txtDireccion").value,
+                montoContrato: document.getElementById("txtMonto").value,
+                nroContrato: document.getElementById("txtNumero").value,
+                mesInicio: parseInt(document.getElementById("mesDesde").value),
+                anioInicio: parseInt(document.getElementById("txtAnioInicio").value),
+                mesFinalizacion: parseInt(document.getElementById("mesHasta").value),
+                anioFinalizacion: parseInt(document.getElementById("txtAnioFin").value),
+                consultoresAsoc: document.getElementById("txtConsultores").value,
+                descripcion: document.getElementById("txtDescProyexto").value,
+                resultados: null,
+                fichaLista: document.getElementById("idFichaLista").checked,
+                enCurso: enEjecucion,
+                departamento: deptoSeleccionado,
+                moneda: monedaSeleccionada,
+                certconformidad: document.getElementById("certConformidad").checked,
+                certificadopor: comboFicha,
+                activo: true,
+                areas: objAreas,
+                personal: objPersonal,
+                link: document.getElementById("txtLink").value,
+                publicaciones: objPublicacion,
+                convenio: document.getElementById("txtConvenio").checked
+            };
+
+            console.log(data);
+
+            fetch(url, {
+                method: "PUT", // or 'PUT'
+                body: JSON.stringify(data), // data can be `string` or {object}!
+                headers: {
+                    Authorization: "Bearer " + localStorage.getItem("token"),
+                    "Content-Type": "application/json",
+                },
+            })
+                .then((res) => res.json())
+                //.catch((error) => console.error("Error:", error))
+                .then((data) => {
+                    if (data) {
+                        Swal.fire({
+                            position: 'center',
+                            icon: 'success',
+                            title: 'Modificacion Exitosa',
+                            showConfirmButton: false,
+                            timer: 1500,
+                        })
+                        window.setInterval(() => {
+                            window.location = "../Main/main.html";
+                        }, 2000)
+                    } else {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Complete los campos',
+                        })
+                        return false;
+                    }
+                    //console.log("Success:", response)
+                });
+            localStorage.setItem("idProyecto", 0);
+        });
+
+    </script>
+</body>
+
+</html>
