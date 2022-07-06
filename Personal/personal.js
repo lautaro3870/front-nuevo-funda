@@ -1,15 +1,5 @@
 $(document).ready(function () {
-    var rol = localStorage.getItem("rol");
-    if (rol != 1) {
-        Swal.fire({
-            icon: "error",
-            title: "No está Autorizado",
-            showConfirmButton: false,
-        });
-        setInterval(() => {
-            window.location = "../index.html";
-        }, 100);
-    } else {
+    {
         fetch("https://proyecto-fundacion.herokuapp.com/api/Personal", {
             method: "get",
             headers: {
