@@ -8,6 +8,7 @@ $('#myModal').on('shown.bs.modal', function () {
     $('#myInput').trigger('focus')
 })
 
+
 var mail = localStorage.getItem("email");
 if (mail == "null" || mail === undefined) {
     Swal.fire({
