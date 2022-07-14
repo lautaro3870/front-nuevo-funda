@@ -138,9 +138,12 @@ $("#example").on("click", "tr", function () {
     console.log(id);
 });
 
+
 //EDITAR
 $(document).on("click", "#btnEditar", function (e) {
     e.preventDefault();
+
+    document.getElementById("spanNombre").innerHTML = "";
 
     fetch(`https://proyecto-fundacion.herokuapp.com/api/Personal/${id}`, {
         method: "get",
@@ -165,6 +168,14 @@ $(document).on("click", "#btnEditar", function (e) {
         };
         console.log(datos);
 
+        if (document.getElementById("txtPersonalEditar").value == "") {
+            Swal.fire({
+                icon: "error",
+                title: "Complete el campo",
+            });
+            return false;
+        }
+
         fetch(`https://proyecto-fundacion.herokuapp.com/api/Personal`, {
             method: "PUT", // or 'PUT'
             body: JSON.stringify(datos), // data can be `string` or {object}!
@@ -184,7 +195,7 @@ $(document).on("click", "#btnEditar", function (e) {
                         timer: 1500,
                     });
                     getTabla2();
-                    $('#exampleModalEditar').modal('toggle');
+                    //$('#exampleModalEditar').modal('toggle');
                 } else {
                     Swal.fire({
                         icon: "error",
