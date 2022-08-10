@@ -32,8 +32,82 @@ $(document).ready(function () {
         })
         .then((json) => {
             console.log(json);
+            let area = localStorage.getItem("area");
+            let desde = localStorage.getItem("desde");
+            let hasta = localStorage.getItem("hasta");
+            let depto = localStorage.getItem("depto");
+            let pais = localStorage.getItem("paisRegion");
+
+            // const a = getTabla()
+            // const b = a.then(tablaFiltrada(depto, desde, hasta, pais, area));
+
+            //getTabla();
+
+            // const respuesta = () => {
+            //     return new Promise((resolve, reject) => {
+            //         resolve(tablaFiltrada(depto, desde, hasta, pais, area))
+            //     })
+            // }
+
+            // getTabla().then(function (resultado) {
+            //     return tablaDevuelta(resultado);
+            // })
+
             getTabla();
+
+            setTimeout(() => {
+                tablaDevuelta();
+            }, 5000)
+
+            // const doAsync = (funcion) => {
+            //     return new Promise((resolve) => {
+            //         resolve(funcion)
+            //     })
+            // }
+
+            // doAsync(getTabla()).then(result => console.log(result))
+
+            // async function tablaa() {
+            //     const r = await getTabla();
+            //     if (r == undefined) {
+            //         tablaDevuelta()
+            //     }
+            // }
+
+            // tablaa();
+
+            // tablaDevuelta();
+
             hideSpinner();
+            // // tablaDevuelta();
+
+            function tablaDevuelta() {
+                document.getElementById("txtDepartamento").value = depto;
+                document.getElementById("txtDesde").value = desde
+                document.getElementById("txtHasta").value = hasta;
+                document.getElementById("txtPaisRegion").value = pais;
+                document.getElementById("txtAreas").value = area;
+
+                tablaFiltrada(depto, desde, hasta, pais, area)
+            }
+
+            // function resolveAfter2Seconds() {
+            //     return new Promise(resolve => {
+            //         getTabla();
+            //     });
+            // }
+
+            // async function asyncCall() {
+            //     console.log('calling');
+            //     const result = await resolveAfter2Seconds().then(r => tablaFiltrada(depto, desde, hasta, pais, area, r))
+            //     console.log(result);
+
+            //     // expected output: "resolved"
+            // }
+
+            // asyncCall();
+
+
         });
 
 });
@@ -80,7 +154,7 @@ $(document).on('click', '#btnImprimirListado', function (e) {
     window.location = "../Impresion/imprimirListado.html"
 });
 
-function getTabla() {
+async function getTabla() {
     $.ajax({
         url: "https://proyecto-fundacion.herokuapp.com/api/proyecto",
         headers: {
@@ -344,7 +418,7 @@ var hasta;
 var paisRegion;
 var area;
 
-function tablaFiltrada(departamento, desde, hasta, paisRegion, area) {
+async function tablaFiltrada(departamento, desde, hasta, paisRegion, area) {
     $.ajax({
         //url: `https://practica-supervisada.herokuapp.com/api/proyecto/tabla?Pais=${paisRegion}&AnioInicio=${desde}&AnioFin=${hasta}&Area=${area}&Departamento=${departamento}`,
         url: `https://proyecto-fundacion.herokuapp.com/api/proyecto?Pais=${paisRegion}&AnioInicio=${desde}&AnioFin=${hasta}&Area=${area}&Departamento=${departamento}`,
@@ -355,6 +429,7 @@ function tablaFiltrada(departamento, desde, hasta, paisRegion, area) {
         success: function (data) {
             var o = data; //A la variable le asigno el json decodificado
             console.log(o);
+
             tabla.destroy();
             tabla = $("#example").DataTable({
                 data: o,
@@ -416,6 +491,12 @@ eliminarFiltros.addEventListener("click", (e) => {
     document.getElementById("txtHasta").value = "";
     document.getElementById("txtPaisRegion").value = "";
     document.getElementById("txtAreas").value = "";
+
+    localStorage.setItem("desde", "");
+    localStorage.setItem("hasta", "");
+    localStorage.setItem("depto", "");
+    localStorage.setItem("paisRegion", "");
+    localStorage.setItem("area", "");
 
     getTabla2();
 })
