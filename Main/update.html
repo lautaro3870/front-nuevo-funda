@@ -149,7 +149,7 @@
 
             <div class="form-group col-md-4">
                 <label>Link</label>
-                <input type="text" class="form-control" id="txtLink">
+                <input type="url" style="color: blue;" class="form-control" id="txtLink">
             </div>
         </div>
 
@@ -336,6 +336,15 @@
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <script>
+
+        let link = document.getElementById("txtLink");
+        link.addEventListener("dblclick", (e) => {
+            e.preventDefault();
+            var valor = document.getElementById("txtLink").value;
+
+            //   window.location = valor;
+            window.open(valor, "_blank");
+        });
 
         let cancelar = document.getElementById("cancelar");
         cancelar.addEventListener("click", (e) => {
