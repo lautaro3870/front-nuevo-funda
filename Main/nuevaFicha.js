@@ -13,6 +13,10 @@ link.addEventListener("dblclick", (e) => {
   e.preventDefault();
   var valor = document.getElementById("txtLink").value;
 
+  if (valor === "") {
+    return false;
+  }
+
   //   window.location = valor;
   window.open(valor, "_blank");
 });

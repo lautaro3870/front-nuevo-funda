@@ -149,7 +149,8 @@
 
             <div class="form-group col-md-4">
                 <label>Link</label>
-                <input type="url" style="color: blue;" class="form-control" id="txtLink">
+                <input type="url" style="color: blue; text-decoration: underline; cursor: grab;" class="form-control"
+                    id="txtLink">
             </div>
         </div>
 
@@ -341,7 +342,9 @@
         link.addEventListener("dblclick", (e) => {
             e.preventDefault();
             var valor = document.getElementById("txtLink").value;
-
+            if (valor === "") {
+                return false;
+            }
             //   window.location = valor;
             window.open(valor, "_blank");
         });
