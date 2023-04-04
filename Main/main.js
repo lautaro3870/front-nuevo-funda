@@ -199,9 +199,9 @@ async function getTabla() {
                     {
                         data: null,
                         defaultContent:
-                            "<div class='form-row'><div class='form-group'><button id='btnEliminar' class='btn btn-danger'><box-icon name='trash'></box-icon></button></div>" +
-                            "<div class='form-group'><button id='btnEditar' data-toggle='modal' data-target='#exampleModalEditar' class='btn btn-primary'><box-icon name='edit'></box-icon></button></div>" +
-                            "<div class='form-group'><button class='btn btn-secondary' id='btnImprimir'><box-icon type='solid' name='printer'></box-icon></box-icon></button></div></div>",
+                            "<div class='form-row'><div class='form-group'><button id='btnEliminar' class='btn btn-danger'><i class='material-icons'>delete</i></button></div>" +
+                            "<div class='form-group'><button id='btnEditar' data-toggle='modal' data-target='#exampleModalEditar' class='btn btn-primary'><i class='material-icons'>edit</i></button></div>" +
+                            "<div class='form-group'><button class='btn btn-secondary' id='btnImprimir'><box-icon type='solid' name='printer'><i class='material-icons'>print</i></button></div></div>",
                     },
                 ],
             });
@@ -255,10 +255,10 @@ function getTabla2() {
                     {
                         data: null,
                         defaultContent:
-                            "<div class='form-row'><div class='form-group'><button id='btnEliminar' class='btn btn-danger'><box-icon name='trash'></box-icon></button></div>" +
-                            "<div class='form-group'><button id='btnEditar' data-toggle='modal' data-target='#exampleModalEditar' class='btn btn-primary'><box-icon name='edit'></box-icon></button></div>" +
-                            "<div class='form-group'><button class='btn btn-secondary' id='btnImprimir'><box-icon type='solid' name='printer'></box-icon></box-icon></button></div></div>",
-                    },
+                            "<div class='form-row'><div class='form-group'><button id='btnEliminar' class='btn btn-danger'><i class='material-icons'>delete</i></button></div>" +
+                            "<div class='form-group'><button id='btnEditar' data-toggle='modal' data-target='#exampleModalEditar' class='btn btn-primary'><i class='material-icons'>edit</i></button></div>" +
+                            "<div class='form-group'><button class='btn btn-secondary' id='btnImprimir'><box-icon type='solid' name='printer'><i class='material-icons'>print</i></button></div></div>",
+                        },
                 ],
             });
         },
@@ -466,9 +466,12 @@ async function tablaFiltrada(departamento, desde, hasta, paisRegion, area) {
                     {
                         data: null,
                         defaultContent:
-                            "<div class='form-row'><div class='form-group'><button id='btnEliminar' class='btn btn-danger'><box-icon name='trash'></box-icon></button></div>" +
-                            "<div class='form-group'><button id='btnEditar' data-toggle='modal' data-target='#exampleModalEditar' class='btn btn-primary'><box-icon name='edit'></box-icon></button></div>" +
-                            "<div class='form-group'><button class='btn btn-secondary' id='btnImprimir'><box-icon type='solid' name='printer'></box-icon></box-icon></button></div></div>",
+                        "<div class='form-row'><div class='form-group'><button id='btnEliminar' class='btn btn-danger'><i class='material-icons'>delete</i></button></div>" +
+                        "<div class='form-group'><button id='btnEditar' data-toggle='modal' data-target='#exampleModalEditar' class='btn btn-primary'><i class='material-icons'>edit</i></button></div>" +
+                        "<div class='form-group'><button class='btn btn-secondary' id='btnImprimir'><box-icon type='solid' name='printer'><i class='material-icons'>print</i></button></div></div>",
+                            // "<div class='form-row'><div class='form-group'><button id='btnEliminar' class='btn btn-danger'><box-icon name='trash'></box-icon></button></div>" +
+                            // "<div class='form-group'><button id='btnEditar' data-toggle='modal' data-target='#exampleModalEditar' class='btn btn-primary'><box-icon name='edit'></box-icon></button></div>" +
+                            // "<div class='form-group'><button class='btn btn-secondary' id='btnImprimir'><box-icon type='solid' name='printer'></box-icon></box-icon></button></div></div>",
                     },
                 ],
             });
