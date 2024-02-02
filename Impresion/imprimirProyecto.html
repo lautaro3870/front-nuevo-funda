@@ -75,6 +75,9 @@
 
             <h4><strong>Descripcion</strong></h4>
             <p id="descripcion"></p>
+
+            <h4><strong>Link</strong></h4>
+            <a id="link"></a>
         </div>
         <br>
         <br>
@@ -180,6 +183,8 @@
                 mesFin = data[0].mesFinalizacion;
                 document.getElementById("anioFin").innerHTML = data[0].anioFinalizacion + "/" + meses(mesFin);
                 document.getElementById("consultores").innerHTML = data[0].consultoresAsoc;
+                document.getElementById("link").innerHTML = data[0].link;
+                document.getElementById("link").href = data[0].link;
 
                 var html = "<ul>"
                 data[0].listaPersonal.forEach(i => {
