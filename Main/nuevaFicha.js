@@ -21,6 +21,19 @@ link.addEventListener("dblclick", (e) => {
   window.open(valor, "_blank");
 });
 
+let pdf = document.getElementById("txtPdf");
+pdf.addEventListener("dblclick", (e) => {
+  e.preventDefault();
+  var valor = document.getElementById("txtPdf").value;
+
+  if (valor === "") {
+    return false;
+  }
+
+  //   window.location = valor;
+  window.open(valor, "_blank");
+});
+
 var mail = localStorage.getItem("email");
 if (mail == "null" || mail === undefined) {
   Swal.fire({
@@ -513,6 +526,10 @@ boton.addEventListener("click", (e) => {
     link: document.getElementById("txtLink").value,
     publicaciones: objPublicacion,
     convenio: document.getElementById("txtConvenio").checked,
+    pdf: document.getElementById("txtPdf").value,
+    isbn: document.getElementById("txtIsbn").value,
+    issn: document.getElementById("txtIssn").value,
+    cita: document.getElementById("txtCita").value,
   };
 
   console.log(data);
