@@ -155,22 +155,28 @@
         </div>
 
         <div class="form-row">
-            <div class="form-group col-md-4">
+            <div class="form-group col-md-3">
                 <label>PDF</label>
                 <input type="url" style="color: blue; text-decoration: underline; cursor: grab;" class="form-control"
                     id="txtPdf">
             </div>
 
-            <div class="form-group col-md-4">
+            <div class="form-group col-md-3">
                 <label>ISBN</label>
                 <input type="text" class="form-control"
                     id="txtIsbn">
             </div>
 
-            <div class="form-group col-md-4">
+            <div class="form-group col-md-3">
                 <label>ISSN</label>
                 <input type="text" class="form-control"
                     id="txtIssn">
+            </div>
+
+            <div class="form-group col-md-3">
+                <label>Revista</label>
+                <input type="text" class="form-control"
+                    id="txtRevista">
             </div>
         </div>
 
@@ -236,6 +242,9 @@
                             <th>ID</th>
                             <th>Personal</th>
                             <th>Coordinador</th>
+                            <th>Sub-Coordinador</th>
+                            <th>Investigador</th>
+                            <th>Consultor Asociado</th>
                             <th>Acciones</th>
                         </tr>
                     </thead>
@@ -480,8 +489,14 @@
         }
 
         var coordinadorOpcion = false;
+        let subCordinadorOpcion = false;
+        let investigadorOpcion = false;
+        let consultorAsociadoOpcion = false;
         function mostrarCoordinador() {
             coordinadorOpcion = document.getElementById("txtCordinador").checked;
+            subCordinadorOpcion = document.getElementById("txtSubCordinador").checked;
+            investigadorOpcion = document.getElementById("txtInvestigador").checked;
+            consultorAsociadoOpcion = document.getElementById("txtConsultorAsociado").checked;
             console.log(coordinadorOpcion)
         }
 
@@ -496,7 +511,6 @@
                         obj.coordinador = true;
                         break;
                     }
-                    //coordinadorOpcion = false;
                 }
             } else {
                 for (const obj of objPersonal) {
@@ -504,7 +518,75 @@
                         obj.coordinador = false;
                         break;
                     }
-                    //coordinadorOpcion = false;
+                }
+            }
+
+        });
+
+        $(document).on('click', '#txtSubCordinador', function () {
+            // e.preventDefault();
+            idPersonal = $(this).parent().parent().children().first().text();
+            console.log(idPersonal);
+
+            if ($(this).is(':checked')) {
+                for (const obj of objPersonal) {
+                    if (obj.id == idPersonal) {
+                        obj.subCoordinador = true;
+                        break;
+                    }
+                }
+            } else {
+                for (const obj of objPersonal) {
+                    if (obj.id == idPersonal) {
+                        obj.subCoordinador = false;
+                        break;
+                    }
+                }
+            }
+
+        });
+
+        $(document).on('click', '#txtInvestigador', function () {
+            // e.preventDefault();
+            idPersonal = $(this).parent().parent().children().first().text();
+            console.log(idPersonal);
+
+            if ($(this).is(':checked')) {
+                for (const obj of objPersonal) {
+                    if (obj.id == idPersonal) {
+                        obj.investigador = true;
+                        break;
+                    }
+                }
+            } else {
+                for (const obj of objPersonal) {
+                    if (obj.id == idPersonal) {
+                        obj.investigador = false;
+                        break;
+                    }
+                }
+            }
+
+        });
+
+        $(document).on('click', '#txtConsultorAsociado', function () {
+            // e.preventDefault();
+            idPersonal = $(this).parent().parent().children().first().text();
+            console.log(idPersonal);
+
+            if ($(this).is(':checked')) {
+                for (const obj of objPersonal) {
+                    if (obj.id == idPersonal) {
+                        obj.consultorAsociado = true;
+                        break;
+                    }
+                }
+            } else {
+                for (const obj of objPersonal) {
+                    if (obj.id == idPersonal) {
+                        obj.consultorAsociado = false;
+                        break;
+                    }
                 }
             }
 
@@ -524,7 +606,10 @@
                 objPersonal.push(
                     {
                         id: select.value,
-                        coordinador: coordinadorOpcion
+                        coordinador: coordinadorOpcion,
+                        subCordinador: subCordinadorOpcion,
+                        investigadorOpcion: investigadorOpcion,
+                        consultorAsociadoOpcion: consultorAsociadoOpcion
                     })
                 console.log(objPersonal);
             }
@@ -570,7 +655,7 @@
                 return false;
             }
 
-            var fila = '<tr id="row' + i + '"><td>' + personal + '</td><td>' + nombre + '</td><td><input type=checkbox onchange="mostrarCoordinador()" id="txtCordinador" /></td><td><button id="btnEliminarPersonal" class="btn btn-danger" onclick="removerPersonal(' + i + ')" type=button><box-icon name="trash"></box-icon></button></td></tr>';
+            var fila = '<tr id="row' + i + '"><td>' + personal + '</td><td>' + nombre + '</td><td><input type=checkbox onchange="mostrarCoordinador()" id="txtCordinador" /></td><td><input type=checkbox onchange="mostrarCoordinador()" id="txtSubCordinador" /></td><td><input type=checkbox onchange="mostrarCoordinador()" id="txtInvestigador" /></td><td><input type=checkbox onchange="mostrarCoordinador()" id="txtConsultorAsociado" /></td><td><button id="btnEliminarPersonal" class="btn btn-danger" onclick="removerPersonal(' + i + ')" type=button><box-icon name="trash"></box-icon></button></td></tr>';
 
             i++;
 
@@ -857,27 +942,35 @@
                 document.getElementById("txtIsbn").value = data[0].isbn;
                 document.getElementById("txtIssn").value = data[0].issn;
                 document.getElementById("txtCita").value = data[0].cita;
+                document.getElementById("txtRevista").value = data[0].revista;
 
                 data[0].listaPersonal.forEach(i => {
 
-                    var fila = '<tr id="row' + i.id + '"><td>' + i.id + '</td><td>' + i.nombre + '</td><td><input type=checkbox onchange="mostrarCoordinador()" id="txtCordinador"/></td><td><button id="btnEliminarPersonal" class="btn btn-danger" onclick="removerPersonal(' + i.id + ')" type=button><box-icon name="trash"></box-icon></button></td></tr>';
+                    var fila = '<tr id="row' + i.id + '"><td>' + i.id + '</td><td>' + i.nombre + '</td><td><input type=checkbox onchange="mostrarCoordinador()" id="txtCordinador"/></td><td><input type=checkbox onchange="mostrarCoordinador()" id="txtSubCordinador" /></td><td><input type=checkbox onchange="mostrarCoordinador()" id="txtInvestigador" /></td><td><input type=checkbox onchange="mostrarCoordinador()" id="txtConsultorAsociado" /></td><td><button id="btnEliminarPersonal" class="btn btn-danger" onclick="removerPersonal(' + i.id + ')" type=button><box-icon name="trash"></box-icon></button></td></tr>';
                     $('#mytable tr:first').after(fila);
 
                     personal.push(i.id)
                     objPersonal.push(
                         {
                             id: parseInt(i.id),
-                            coordinador: i.coordinador
+                            coordinador: i.coordinador,
+                            subCoordinador: i.subCoordinador,
+                            investigador: i.investigador,
+                            consultorAsociado: i.consultorAsociado,
                         }
                     )
                     for (const obj of objPersonal) {
-                        if (obj.coordinador) {
-                            console.log("esta chequeado")
-                            document.getElementById("txtCordinador").checked = true;
-                        }
-                        else {
-                            document.getElementById("txtCordinador").checked = false;
-                        }
+                        // Marca o desmarca el checkbox según el valor de obj.coordinador
+                        document.getElementById("txtCordinador").checked = obj.coordinador === true;
+                        
+                        // Marca o desmarca el checkbox según el valor de obj.subcoordinador
+                        document.getElementById("txtSubCordinador").checked = obj.subCoordinador === true;
+                        
+                        // Marca o desmarca el checkbox según el valor de obj.investigador
+                        document.getElementById("txtInvestigador").checked = obj.investigador === true;
+                        
+                        // Marca o desmarca el checkbox según el valor de obj.consultorAsociado
+                        document.getElementById("txtConsultorAsociado").checked = obj.consultorAsociado === true;
                     }
                 });
 
@@ -961,6 +1054,7 @@
                 isbn: document.getElementById("txtIsbn").value,
                 issn: document.getElementById("txtIssn").value,
                 cita: document.getElementById("txtCita").value,
+                revista: document.getElementById("txtRevista").value
             };
 
             console.log(data);

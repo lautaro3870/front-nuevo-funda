@@ -125,7 +125,6 @@ $(document).on("click", "#txtCordinador", function () {
         obj.coordinador = true;
         break;
       }
-      //coordinadorOpcion = false;
     }
   } else {
     for (const obj of objPersonal) {
@@ -133,7 +132,72 @@ $(document).on("click", "#txtCordinador", function () {
         obj.coordinador = false;
         break;
       }
-      //coordinadorOpcion = false;
+    }
+  }
+});
+
+$(document).on("click", "#txtSubCordinador", function () {
+  // e.preventDefault();
+  id = $(this).parent().parent().children().first().text();
+  console.log(id);
+
+  if ($(this).is(":checked")) {
+    for (const obj of objPersonal) {
+      if (obj.id == id) {
+        obj.subCoordinador = true;
+        break;
+      }
+    }
+  } else {
+    for (const obj of objPersonal) {
+      if (obj.id == id) {
+        obj.subCoordinador = false;
+        break;
+      }
+    }
+  }
+});
+
+$(document).on("click", "#txtInvestigador", function () {
+  // e.preventDefault();
+  id = $(this).parent().parent().children().first().text();
+  console.log(id);
+
+  if ($(this).is(":checked")) {
+    for (const obj of objPersonal) {
+      if (obj.id == id) {
+        obj.investigador = true;
+        break;
+      }
+    }
+  } else {
+    for (const obj of objPersonal) {
+      if (obj.id == id) {
+        obj.investigador = false;
+        break;
+      }
+    }
+  }
+});
+
+$(document).on("click", "#txtConsultorAsociado", function () {
+  // e.preventDefault();
+  id = $(this).parent().parent().children().first().text();
+  console.log(id);
+
+  if ($(this).is(":checked")) {
+    for (const obj of objPersonal) {
+      if (obj.id == id) {
+        obj.consultorAsociado = true;
+        break;
+      }
+    }
+  } else {
+    for (const obj of objPersonal) {
+      if (obj.id == id) {
+        obj.consultorAsociado = false;
+        break;
+      }
     }
   }
 });
@@ -143,6 +207,9 @@ var objPersonal = [];
 var select;
 function imprimirValorPersonal() {
   var coordinadorOpcion = false;
+  const subCordinadorOpcion = false;
+  const investigadorOpcion = false;
+  const consultorAsociadoOpcion = false;
   select = document.getElementById("txtPersonal");
   var options = document.getElementById("idOpcionPersonal");
 
@@ -153,6 +220,9 @@ function imprimirValorPersonal() {
     objPersonal.push({
       id: select.value,
       coordinador: coordinadorOpcion,
+      subCoordinador: subCordinadorOpcion,
+      investigador: investigadorOpcion,
+      consultorAsociado: consultorAsociadoOpcion
     });
     console.log(objPersonal);
   }
@@ -209,7 +279,7 @@ function cargarTabla() {
     personal +
     "</td><td>" +
     nombre +
-    '</td><td><input type=checkbox id="txtCordinador"/></td><td><button class="btn btn-danger" id="btnEliminarPersonal" onclick="removerPersonal(' +
+    '</td><td><input type=checkbox id="txtCordinador"/></td><td><input type=checkbox id="txtSubCordinador"/></td><td><input type=checkbox id="txtInvestigador"/></td><td><input type=checkbox id="txtConsultorAsociado"/></td><td><button class="btn btn-danger" id="btnEliminarPersonal" onclick="removerPersonal(' +
     i +
     ')" type=button><box-icon name="trash"></box-icon></button></td></tr>';
 
@@ -530,6 +600,7 @@ boton.addEventListener("click", (e) => {
     isbn: document.getElementById("txtIsbn").value,
     issn: document.getElementById("txtIssn").value,
     cita: document.getElementById("txtCita").value,
+    revista: document.getElementById("txtRevista").value
   };
 
   console.log(data);
