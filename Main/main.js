@@ -39,48 +39,13 @@ $(document).ready(function () {
             let pais = localStorage.getItem("paisRegion");
             let link = localStorage.getItem("link");
 
-            // const a = getTabla()
-            // const b = a.then(tablaFiltrada(depto, desde, hasta, pais, area));
-
-            //getTabla();
-
-            // const respuesta = () => {
-            //     return new Promise((resolve, reject) => {
-            //         resolve(tablaFiltrada(depto, desde, hasta, pais, area))
-            //     })
-            // }
-
-            // getTabla().then(function (resultado) {
-            //     return tablaDevuelta(resultado);
-            // })
-
             getTabla();
 
             setTimeout(() => {
                 tablaDevuelta();
             }, 5000)
 
-            // const doAsync = (funcion) => {
-            //     return new Promise((resolve) => {
-            //         resolve(funcion)
-            //     })
-            // }
-
-            // doAsync(getTabla()).then(result => console.log(result))
-
-            // async function tablaa() {
-            //     const r = await getTabla();
-            //     if (r == undefined) {
-            //         tablaDevuelta()
-            //     }
-            // }
-
-            // tablaa();
-
-            // tablaDevuelta();
-
             hideSpinner();
-            // // tablaDevuelta();
 
             function tablaDevuelta() {
                 document.getElementById("txtDepartamento").value = depto;
@@ -92,24 +57,6 @@ $(document).ready(function () {
 
                 tablaFiltrada(depto, desde, hasta, pais, area, link)
             }
-
-            // function resolveAfter2Seconds() {
-            //     return new Promise(resolve => {
-            //         getTabla();
-            //     });
-            // }
-
-            // async function asyncCall() {
-            //     console.log('calling');
-            //     const result = await resolveAfter2Seconds().then(r => tablaFiltrada(depto, desde, hasta, pais, area, r))
-            //     console.log(result);
-
-            //     // expected output: "resolved"
-            // }
-
-            // asyncCall();
-
-
         });
 
 });
@@ -415,6 +362,11 @@ function getTablaFiltrada() {
     }
 }
 
+function buscarProyectosPorTitulo() {
+    var titulo = document.getElementById("txtTitulo").value;
+    tablaFiltradaPorTitulo(titulo);
+}
+
 var listadoFichas;
 var departamento;
 var desde;
@@ -422,6 +374,63 @@ var hasta;
 var paisRegion;
 var area;
 var link;
+
+async function tablaFiltradaPorTitulo(titulo) {
+    $.ajax({
+        url:  `https://proyecto-fundacion.herokuapp.com/api/proyecto/texto?texto=${titulo}`,
+        headers: {
+            Authorization: "Bearer " + localStorage.getItem("token"),
+            "Content-Type": "application/json",
+        },
+        success: function(data) {
+            var o = data; //A la variable le asigno el json decodificado
+            console.log(o);
+
+            tabla.destroy();
+            tabla = $("#example").DataTable({
+                data: o,
+                searching: true,
+                fixedHeader: {
+                    header: true,
+                    footer: true
+                },
+                language: {
+                    "lengthMenu": "Mostrar _MENU_ proyectos por página",
+                    "zeroRecords": "Ningún proyecto encontrado",
+                    "infoEmpty": "Ningún proyecto disponible",
+                    "search": "Búscar",
+                    "sInfo": "Mostrando proyectos del _START_ al _END_ de un total de _TOTAL_ proyectos",
+                    "oPaginate": {
+                        "sFirst": "Primero",
+                        "sLast": "Último",
+                        "sNext": "Siguiente",
+                        "sPrevious": "Anterior"
+                    },
+                },
+                rowId: "id",
+                order: [],
+                columns: [
+                    { data: "titulo" },
+                    { data: "paisRegion" },
+                    { data: "anioInicio" },
+                    { data: "anioFinalizacion" },
+                    { data: "montoContrato" },
+                    { data: "moneda" },
+                    { data: "listaAreas[ - ].area1" },
+                    { data: "departamentos" },
+                    { data: "contratante" },
+                    {
+                        data: null,
+                        defaultContent:
+                        "<div class='form-row'><div class='form-group'><button id='btnEliminar' class='btn btn-danger'><i class='material-icons'>delete</i></button></div>" +
+                        "<div class='form-group'><button id='btnEditar' data-toggle='modal' data-target='#exampleModalEditar' class='btn btn-primary'><i class='material-icons'>edit</i></button></div>" +
+                        "<div class='form-group'><button class='btn btn-secondary' id='btnImprimir'><box-icon type='solid' name='printer'><i class='material-icons'>print</i></button></div></div>",
+                    },
+                ],
+            });
+        }
+    })
+}
 
 async function tablaFiltrada(departamento, desde, hasta, paisRegion, area, link) {
     $.ajax({
@@ -474,9 +483,6 @@ async function tablaFiltrada(departamento, desde, hasta, paisRegion, area, link)
                         "<div class='form-row'><div class='form-group'><button id='btnEliminar' class='btn btn-danger'><i class='material-icons'>delete</i></button></div>" +
                         "<div class='form-group'><button id='btnEditar' data-toggle='modal' data-target='#exampleModalEditar' class='btn btn-primary'><i class='material-icons'>edit</i></button></div>" +
                         "<div class='form-group'><button class='btn btn-secondary' id='btnImprimir'><box-icon type='solid' name='printer'><i class='material-icons'>print</i></button></div></div>",
-                            // "<div class='form-row'><div class='form-group'><button id='btnEliminar' class='btn btn-danger'><box-icon name='trash'></box-icon></button></div>" +
-                            // "<div class='form-group'><button id='btnEditar' data-toggle='modal' data-target='#exampleModalEditar' class='btn btn-primary'><box-icon name='edit'></box-icon></button></div>" +
-                            // "<div class='form-group'><button class='btn btn-secondary' id='btnImprimir'><box-icon type='solid' name='printer'></box-icon></box-icon></button></div></div>",
                     },
                 ],
             });
@@ -490,6 +496,12 @@ filtrar.addEventListener("click", (e) => {
     getTablaFiltrada();
 })
 
+let buscarBtn = document.getElementById("btnBuscar");
+buscarBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+    buscarProyectosPorTitulo();
+});
+
 
 let eliminarFiltros = document.getElementById("btnEliminarFiltros");
 eliminarFiltros.addEventListener("click", (e) => {
@@ -500,6 +512,7 @@ eliminarFiltros.addEventListener("click", (e) => {
     document.getElementById("txtPaisRegion").value = "";
     document.getElementById("txtAreas").value = "";
     document.getElementById("hasLink").value = "";
+    document.getElementById("txtTitulo").value = "";
 
     localStorage.setItem("desde", "");
     localStorage.setItem("hasta", "");
