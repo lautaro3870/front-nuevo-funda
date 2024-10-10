@@ -91,6 +91,9 @@ function hideSpinner() {
     document.getElementById("spinner").style.display = "none";
 }
 
+function showSpinner() {
+    document.getElementById("spinner").style.display = "block";
+}
 
 function cerrarSesion() {
     localStorage.setItem("token", 0);
@@ -376,6 +379,7 @@ var area;
 var link;
 
 async function tablaFiltradaPorTitulo(titulo) {
+    showSpinner();
     $.ajax({
         url:  `https://proyecto-fundacion.herokuapp.com/api/proyecto/texto?texto=${titulo}`,
         headers: {
@@ -384,8 +388,8 @@ async function tablaFiltradaPorTitulo(titulo) {
         },
         success: function(data) {
             var o = data; //A la variable le asigno el json decodificado
-            console.log(o);
-
+            
+            hideSpinner();
             tabla.destroy();
             tabla = $("#example").DataTable({
                 data: o,
@@ -433,6 +437,7 @@ async function tablaFiltradaPorTitulo(titulo) {
 }
 
 async function tablaFiltrada(departamento, desde, hasta, paisRegion, area, link) {
+    showSpinner();
     $.ajax({
         //url: `https://practica-supervisada.herokuapp.com/api/proyecto/tabla?Pais=${paisRegion}&AnioInicio=${desde}&AnioFin=${hasta}&Area=${area}&Departamento=${departamento}`,
         url: `https://proyecto-fundacion.herokuapp.com/api/proyecto?Pais=${paisRegion}&AnioInicio=${desde}&AnioFin=${hasta}&Area=${area}&Departamento=${departamento}&Link=${link}`,
@@ -443,7 +448,7 @@ async function tablaFiltrada(departamento, desde, hasta, paisRegion, area, link)
         success: function (data) {
             var o = data; //A la variable le asigno el json decodificado
             console.log(o);
-
+            hideSpinner();
             tabla.destroy();
             tabla = $("#example").DataTable({
                 data: o,
